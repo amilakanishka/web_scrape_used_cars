@@ -131,13 +131,15 @@ def extract_data(soup, df):
 
     car_ext_features_list = soup.find(id = 'exterior-features').find_all('li')
     car_ext_list = ''
-    for feature in car_ext_features_list:
-        car_ext_list =  f"{car_ext_list} '{feature.text}'"   
+    if(car_ext_features_list):
+        for feature in car_ext_features_list:
+            car_ext_list =  f"{car_ext_list} '{feature.text}'"   
 
     car_int_features_list = soup.find(id = 'interior-features').find_all('li')
     car_int_list = ''
-    for feature in car_int_features_list:
-        car_int_list = f"{car_int_list} '{feature.text}'"
+    if(car_int_features_list):
+        for feature in car_int_features_list:
+            car_int_list = f"{car_int_list} '{feature.text}'"
 
     v = soup.find("div", {"data-test-id" : "Top speed"})
     top_speed = ''
